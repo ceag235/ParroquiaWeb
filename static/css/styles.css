@@ -1,0 +1,31 @@
+body
+{
+background: #E6E6E6;
+}
+ 
+.container
+{
+    background:#fff;
+    box-shadow: 0 0 10px #000;
+    border-radius:10px;
+    height: 700px;
+    margin: 0 auto;
+    padding: 5px;
+    width: 1050px;
+    text-align:center;
+}
+
+.capas
+{
+border: 1px solid #000;
+display:inline-block;
+height: 700px;
+vertical-align:top;
+width: 500px;
+}
+
+#data {
+    text-align:left;
+    overflow:auto;
+}
+
