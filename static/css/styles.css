@@ -8,7 +8,7 @@ background: #E6E6E6;
     background:#fff;
     box-shadow: 0 0 10px #000;
     border-radius:10px;
-    height: 700px;
+    height: 710px;
     margin: 0 auto;
     padding: 5px;
     width: 1050px;
@@ -17,11 +17,11 @@ background: #E6E6E6;
 
 .capas
 {
-border: 1px solid #000;
-display:inline-block;
-height: 700px;
-vertical-align:top;
-width: 500px;
+    border: 1px solid #000;
+    display:inline-block;
+    height: 700px;
+    vertical-align:top;
+    width: 500px;
 }
 
 #data {
@@ -29,3 +29,30 @@ width: 500px;
     overflow:auto;
 }
 
+.capasDetail
+{
+    border: 1px solid #000;
+    display:inline-block;
+    height: 390px;
+    vertical-align:top;
+    width: 500px;
+}
+
+.slideShow{
+    border: 1px solid #000;
+    display:inline-block;
+    height: 310px;
+    vertical-align:top;
+    width: 1006px;  
+}
+
+/*#nav-bar{
+    background:#fff;
+    border-radius:10px;
+    height: 20px;
+    margin: 10px auto;
+    padding: 5px;
+    width: 1050px;
+    text-align:center;
+    
+}*/

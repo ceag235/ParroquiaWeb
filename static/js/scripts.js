@@ -1,7 +1,10 @@
+var markerList=[];
+var detailMarkerList=[];
+
 $(function(){
  
    initialize();
- 
+    
    function initialize() {
         //mostramos la variable navigator
         console.log(navigator.geolocation);
@@ -82,16 +85,33 @@ $(function(){
         }
  
         var map = new google.maps.Map($('#mapa').get(0),mapSettings);
- 
- 
-        //var marker = new google.maps.Marker({
-            marker = new google.maps.Marker({
+        
+        var pinColor = "69c2fe";
+        var pinImage = {
+            url:  "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=location|" + pinColor,
+            size: new google.maps.Size(21, 34),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(10, 34),
+            labelOrigin: new google.maps.Point(10,-5),
+        };
+    
+
+        var  marker = new google.maps.Marker({
             position:latlng,
             map:map,
             draggable:true,
-            title:"Arrastrame!"
+            title:"Arrastrame!",
+	        label: {
+                color: 'red',
+                fontWeight: 'bold',
+                text: 'YO',
+                },
+            icon: pinImage
         });
- 
+        
+        markerList.push(marker);
+        detailMarkerList.push(marker);
+        
         getMarkerCoords(marker);
         
         loadMarkers(map);
@@ -99,9 +119,6 @@ $(function(){
         google.maps.event.addListener(marker,'position_changed',function(){
             getMarkerCoords(marker);
         });
-        
-        
-        
     }
     
     function getMarkerCoords(marker){

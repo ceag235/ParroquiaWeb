@@ -1,14 +1,69 @@
-<DOCTYPE Html>
-    <html>
-        
-        <h1> Detalle de la Parroquia {{ parroquia.nombre }} </h1>
-        
-        <p> Direccion: {{ parroquia.direccion }} </p>
-        <p> Cordenadas: Lat = {{ parroquia.latitud }}  Long = {{ parroquia.longitud }} </p>
-        
-        <a href="/lista/"> Volver</a>
-        
-    </html>
+{% extends 'parroquialista/base.html'%}
 
-    
-</DOCTYPE>
+{% block title%}
+    Parroquia {{ parroquia.nombre }}
+{% endblock %}
+
+{% block container%}
+        <div id="datos" class="capasDetail">
+            <div id="data">
+                Información:
+                <ul>
+                    <li>Nombre: <span id="nombre">{{ parroquia.nombre }}</span></li>
+                    <li>Dirección: <span id="direccion">{{ parroquia.direccion }}</span></li>
+                    <li>Cordenadas: Lat = <span id="lat">{{ parroquia.latitud }}</span>  Long = <span id="long">{{ parroquia.longitud }}</span></li>
+                </ul>
+                <a href="/lista/"> Volver</a>
+            </div>
+            <div id="eventos"> Proximas Actividades </div>
+        </div>
+        <div id="mapa" class="capasDetail"></div>
+        <div id="fotos" class="slideShow"> Fotos Imagenes y Mas </div>
+{% endblock %}
+
+{% block jsconnect%} 
+
+<script type="text/javascript">
+   
+    function loadMarkers(map){
+                var lat = $("#lat").text();
+                var long = $("#long").text();
+                
+                var point = new google.maps.LatLng(lat,long);
+                console.log(point);
+                
+                var pinColor = "FE7569";
+                var pinImage = {
+                    url:  "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=location|" + pinColor,
+                    size: new google.maps.Size(21, 34),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(10, 34),
+                    labelOrigin: new google.maps.Point(10,-5),
+                };
+                
+                var marker = new google.maps.Marker({
+                    position: point,
+                    map: map,
+                    draggable:false,
+                    icon:pinImage,
+                    label:{
+                        text:$("#nombre").text(),
+                        color: 'Black',
+                        fontWeight: 'bold',
+                    }
+                    });
+                    
+                detailMarkerList.push(marker);
+                
+                var newBoundary = new google.maps.LatLngBounds();
+                for(index in detailMarkerList){
+                  var position = detailMarkerList[index].position;
+                  newBoundary.extend(position);
+                }
+                
+                map.fitBounds(newBoundary);
+                
+    }
+    </script>
+
+{% endblock %}

@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 class Parroquia(models.Model):
-    nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=300)
     direccion=models.CharField(max_length=200)
     latitud=models.CharField(max_length=20)
     longitud=models.CharField(max_length=20)

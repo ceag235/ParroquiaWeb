@@ -1,23 +1,23 @@
 {% extends 'parroquialista/base.html'%}
 
 {% block title%}
-    Listado de Parroquias
+    Resultado de Busqeda
 {% endblock %}
 
 {% block container%}
         <div id="mapa" class="capas"></div>
         <div id="datos" class="capas">
             <div id="data">
-                Listado de Parroquia
+                Resultados de laq Busqueda:
                 <ul>
                     {% for Parroquia in lista_parroquia %}
-                        <li><a href="{% url 'parroquialista:detail' Parroquia.id %}">{{ Parroquia.nombre }}</a></li>
+                        <li><a href="{% url 'parroquialista:detail' Parroquia.id %}">{{ Parroquia.nombre }}</a> <span> -Sector:{{ Parroquia.direccion }}</span></li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
 {% endblock %}
-<!-- '/lista/{{ Parroquia.id }}/' -->
+
 {% block jsconnect%} 
 
 <script type="text/javascript">
@@ -37,13 +37,11 @@
    
     var obj = JSON.parse( myDjangoList );
 
-
-
     function loadMarkers(map){
         
             var pinColor = "FE7569";
             var pinImage = {
-                url:  "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|" + pinColor,
+                url:  "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=location|" + pinColor,
                 size: new google.maps.Size(21, 34),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(10, 34),
